@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3x3 Bingo Online</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="h1"><h1>3x3 Bingo Card</h1></div>
+  <div class="bodih">
+
+      
+      <div class="section">
+          <h2>Create Room</h2>
+          <label>Room ID: <input id="createRoomId" /></label>
+          <label>Password: <input id="createPassword" type="password" /></label>
+          <label>Your Name: <input id="createName" /></label>
+          <label>Your Color: <input id="createColor" type="color" value="#ff0000" /></label>
+          <p>Enter 15–20 options (one per line):</p>
+          <textarea id="optionsInput" rows="6" cols="30"></textarea><br />
+    <button id="createRoomBtn">Create Room</button>
+    <p id="createStatus" class="status"></p>
+  </div>
+  
+  <div class="section">
+      <h2>Join Room</h2>
+      <label>Room ID: <input id="joinRoomId" /></label>
+      <label>Password: <input id="joinPassword" type="password" /></label>
+      <label>Your Name: <input id="joinName" /></label>
+      <label>Your Color: <input id="joinColor" type="color" value="#00aa00" /></label>
+      <button id="joinRoomBtn">Join Room</button>
+      <p id="joinStatus" class="status"></p>
+    </div>
+    
+    <div class="section" id="gameSection" style="display:none;">
+        <h2>Room: <span id="currentRoom"></span></h2>
+        <p>Players in room:</p>
+    <ul id="playersList"></ul>
+    
+    <h3>Your Bingo Card</h3>
+    <div id="card" class="card"></div>
+    <p>Click a cell to color it with your selected color.</p>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+</div>
+</body>
+</html>

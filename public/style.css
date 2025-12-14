@@ -1,0 +1,273 @@
+:root {
+  --bg: #0f172a;
+  --bg-soft: #111827;
+  --accent: #6366f1;
+  --accent-soft: rgba(99,102,241,0.15);
+  --accent-strong: #4f46e5;
+  --text: #f9fafb;
+  --text-muted: #9ca3af;
+  --border: #1f2933;
+  --danger: #f97373;
+}
+
+* {
+  box-sizing: border-box;
+}
+body{
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+}
+.h1{
+    text-align: center;
+    color: var(--text);
+}
+
+.bodih {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  color: var(--text);
+}
+
+.app-container {
+  width: 100%;
+  max-width: 1100px;
+  padding: 24px;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 20px;
+}
+
+.card-panel {
+  background: linear-gradient(145deg, #020617 0, #020617 40%, #111827 100%);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 16px 18px 18px;
+  box-shadow: 0 18px 40px rgba(15,23,42,0.75);
+}
+
+.card-panel h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+.card-panel small {
+  color: var(--text-muted);
+}
+
+.section-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.section-column {
+  flex: 1;
+}
+
+/* Inputs */
+
+label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #1f2937;
+  background-color: #020617;
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(99,102,241,0.45);
+  background-color: #020617;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+input[type="color"] {
+  width: 40px;
+  height: 32px;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid #1f2937;
+  background-color: #020617;
+  cursor: pointer;
+}
+
+/* Buttons */
+
+button {
+  margin-top: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--accent) 0, var(--accent-strong) 100%);
+  color: #e5e7eb;
+  box-shadow: 0 10px 30px rgba(79,70,229,0.55);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(79,70,229,0.7);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 6px 18px rgba(79,70,229,0.5);
+}
+
+/* Status text */
+
+.status {
+  min-height: 18px;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.status.success {
+  color: #4ade80;
+}
+
+/* Right side game panel */
+
+#gameSection {
+  margin-top: 10px;
+}
+
+#currentRoom {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.players-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+#playersList {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+#playersList li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  padding: 3px 0;
+}
+
+.player-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+/* Bingo card */
+
+.card-wrapper {
+  margin-top: 12px;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.cell {
+  border-radius: 10px;
+  background: #020617;
+  border: 1px solid #1f2937;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 72px;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  transition: background 0.12s, transform 0.12s, box-shadow 0.12s, border-color 0.12s;
+}
+
+.cell:hover {
+  box-shadow: 0 0 0 1px var(--accent);
+  transform: translateY(-1px);
+}
+
+.cell span {
+  padding: 2px 4px;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
