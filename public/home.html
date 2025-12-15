@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bingo Lobby</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <h1>Online Bingo Rooms</h1>
+    <p class="subtitle">
+      Create a room, invite friends, or join as a spectator to watch the game.
+    </p>
+
+    <div class="grid-layout">
+      <div class="card-panel">
+        <h2>Host a Game</h2>
+        <small>Set up a new room with your own bingo options.</small>
+        <div style="margin-top:16px;">
+          <button onclick="window.location.href='create.html'">
+            Create Room
+          </button>
+        </div>
+      </div>
+
+      <div class="card-panel">
+        <h2>Join or Spectate</h2>
+        <small>Already have a room ID and password?</small>
+        <div style="margin-top:16px; display:flex; flex-direction:column; gap:10px;">
+          <button onclick="window.location.href='room.html?mode=join'">
+            Join as Player
+          </button>
+          <button onclick="window.location.href='room.html?mode=spectate'">
+            Join as Spectator
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

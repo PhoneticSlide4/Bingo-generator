@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Bingo Room</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <h1>Create Bingo Room</h1>
+    <p class="subtitle">
+      Choose a room ID, password, bingo size, and enter as many options as you like.
+    </p>
+
+    <div class="card-panel">
+      <h2>Room Settings</h2>
+      <small>Share the room ID and password with your friends.</small>
+
+      <div class="section-row" style="margin-top:14px;">
+        <div class="section-column">
+          <label>Room ID</label>
+          <input id="createRoomId" type="text" placeholder="e.g. FridayNightBingo" />
+
+          <label>Password</label>
+          <input id="createPassword" type="password" placeholder="Room password" />
+
+          <label>Your Name</label>
+          <input id="createName" type="text" placeholder="Host name" />
+
+          <label>Your Color</label>
+          <input id="createColor" type="color" value="#ff4d4d" />
+
+          <label>Bingo Size</label>
+          <select id="createSize">
+            <option value="3">3 × 3</option>
+            <option value="4">4 × 4</option>
+            <option value="5">5 × 5</option>
+          </select>
+        </div>
+
+        <div class="section-column">
+          <label>Bingo Options (one per line)</label>
+          <textarea
+            id="optionsInput"
+            placeholder="Type each bingo item on its own line. You can add as many as you want."
+          ></textarea>
+
+          <button id="createRoomBtn">Create Room</button>
+          <p id="createStatus" class="status"></p>
+
+          <small style="font-size:11px;color:var(--text-muted);">
+            After the room is created, you will be taken to the room page as the host.
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <button onclick="window.location.href='home.html'">Back to Home</button>
+    </div>
+  </div>
+
+  <script src="create.js"></script>
+</body>
+</html>

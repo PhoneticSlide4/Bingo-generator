@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bingo Room</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <h1>Bingo Room</h1>
+    <p class="subtitle" id="subtitleText">
+      Join a room as host, player, or spectator.
+    </p>
+
+    <div class="grid-layout">
+      <!-- Left panel: join form + host controls -->
+      <div class="card-panel">
+        <h2 id="leftTitle">Join Room</h2>
+        <small id="leftSub">Enter room info to join or spectate.</small>
+
+        <div id="joinForm">
+          <label>Room ID</label>
+          <input id="joinRoomId" type="text" placeholder="Room ID" />
+
+          <label>Password</label>
+          <input id="joinPassword" type="password" placeholder="Room password" />
+
+          <label>Your Name</label>
+          <input id="joinName" type="text" placeholder="Your name" />
+
+          <div id="colorWrapper">
+            <label>Your Color</label>
+            <input id="joinColor" type="color" value="#22c55e" />
+          </div>
+
+          <button id="joinRoomBtn">Join</button>
+          <p id="joinStatus" class="status"></p>
+
+          <small style="font-size:11px;color:var(--text-muted);">
+            This page mode (player or spectator) is determined by the link you used.
+          </small>
+        </div>
+
+        <div id="hostControls" style="display:none; margin-top:16px;">
+          <h3>Host Controls</h3>
+          <small>Only host sees this panel.</small>
+
+          <div style="margin-top:8px; display:flex; flex-direction:column; gap:8px;">
+            <button id="generateCardsBtn">Generate / Re-generate Cards</button>
+            <button id="deleteRoomBtn" style="background:linear-gradient(135deg,#f97373,#ef4444);">
+              Delete Room
+            </button>
+          </div>
+
+          <p id="hostStatus" class="status"></p>
+        </div>
+
+        <div style="margin-top:16px;">
+          <button onclick="window.location.href='home.html'">Back to Home</button>
+        </div>
+      </div>
+
+      <!-- Right panel: players + board -->
+      <div class="card-panel" id="gameSection" style="display:none;">
+        <h2>Room</h2>
+        <div class="players-header">
+          <div>
+            ID: <span id="currentRoom"></span>
+          </div>
+          <div id="youLabel" style="font-size:11px;color:var(--text-muted);"></div>
+        </div>
+
+        <div>
+          <h3>Players</h3>
+          <ul id="playersList"></ul>
+
+          <h3>Spectators</h3>
+          <ul id="spectatorsList"></ul>
+        </div>
+
+        <div class="card-wrapper">
+          <div class="card-title-row">
+            <h3>Your Card</h3>
+            <span class="card-hint" id="cardHint">
+              Waiting for host to generate cards...
+            </span>
+          </div>
+          <div id="card" class="card"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="room.js"></script>
+</body>
+</html>

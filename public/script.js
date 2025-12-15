@@ -25,6 +25,10 @@ const gameSection = document.getElementById("gameSection");
 const currentRoom = document.getElementById("currentRoom");
 const playersList = document.getElementById("playersList");
 const cardDiv = document.getElementById("card");
+const params = new URLSearchParams(window.location.search);
+const mode = params.get("mode") || "join"; // "host" / "join" / "spectate"
+
+
 
 // Create room (HTTP)
 createRoomBtn.addEventListener("click", async () => {
@@ -107,28 +111,42 @@ joinRoomBtn.addEventListener("click", () => {
 });
 
 // Render 3x3 card
-function renderCard() {
+function renderCard(card, size) {
   cardDiv.innerHTML = "";
-  myCard.forEach((text, index) => {
+  cardDiv.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+  card.forEach((text, index) => {
     const cell = document.createElement("div");
     cell.className = "cell";
     cell.dataset.index = index;
+
     const span = document.createElement("span");
-    span.textContent = text;
+    span.textContent = text; // full text, not single letter
     cell.appendChild(span);
 
-    cell.addEventListener("click", () => {
-      if (!currentRoomId) return;
-      socket.emit("markCell", { roomId: currentRoomId, index }, (res) => {
-        if (!res.ok) {
-          console.log("Mark error:", res.error);
-        }
+    if (!isSpectator) {
+      cell.addEventListener("click", () => {
+        socket.emit("markCell", { roomId: currentRoomId, index }, () => {});
       });
-    });
+    }
 
     cardDiv.appendChild(cell);
   });
 }
+socket.on("cardGenerated", ({ card, size }) => {
+  myCard = card;
+  currentSize = size;
+  renderCard(card, size);
+});
+let isSpectator = false;
+socket.emit("joinRoom", { roomId, password, name, color, role }, (res) => {
+  isSpectator = res.role === "spectator";
+  if (isSpectator) {
+    document.getElementById("yourColorWrapper").style.display = "none";
+  }
+  // ...
+});
+
 
 // Update players list
 function updatePlayersList(players) {
